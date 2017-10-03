@@ -1,0 +1,87 @@
+﻿<Window x:Class="NetworkOperator.OperandSelectors.ScreenEdgeSelectorConfiguratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkOperator.OperandSelectors"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        MinWidth="600"
+        Width="600"
+        MinHeight="500"
+        Height="500"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+
+    </Window.Resources>
+    <StackPanel Name="WindowPanel">
+        <StackPanel Orientation="Horizontal">
+            <Button Name="BBack"
+                    Width="35" 
+                    Height="35"
+                    Background="White"
+                    Margin="10"
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="BBack_Click" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius"
+                                Value="17.5"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="&lt;="
+                           FontSize="17.5"
+                           Margin="-1,-1,0,0" />
+            </Button>
+            <TextBlock Text="Screen Positions Settings"
+                       VerticalAlignment="Center"
+                       FontSize="30"/>
+        </StackPanel>
+        <Button x:Name="BUp"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0"                
+                Style="{StaticResource CustomButton}"
+                Click="BUp_Click">
+            <Image Source="Images/arrow-up.png" Width="100" />
+        </Button>
+        <StackPanel HorizontalAlignment="Center" 
+                    Orientation="Horizontal">
+            <Button x:Name="BLeft"  
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CustomButton}"
+                    Click="BLeft_Click">
+                <Image Source="Images/arrow-left.png" Height="100" />
+            </Button>
+            <local:Table x:Name="view"
+                         Rows="3" 
+                         Columns="3"
+                         MinColumnWidth="150"
+                         MinRowHeight="75"
+                         CellPadding="0, 27, 0, 0"
+                         Margin="5" />
+            <Button x:Name="BRight"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CustomButton}"
+                    Click="BRight_Click">
+                <Image Source="Images/arrow-right.png" Height="100" />
+            </Button>
+        </StackPanel>
+        <Button x:Name="BDown"
+                HorizontalAlignment="Center"
+                Style="{StaticResource CustomButton}"
+                Click="BDown_Click">
+            <Image Source="Images/arrow-down.png" Width="100" />
+        </Button>
+        <Button x:Name="BApply"
+                HorizontalAlignment="Left"
+                Margin="10,40,0,0"
+                FontSize="20"
+                Padding="7"
+                IsEnabled="False"
+                Click="BApply_Click">
+            Apply
+        </Button>
+    </StackPanel>
+</Window>

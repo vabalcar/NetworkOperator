@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF270FFF-B39B-418F-8749-26A232BF5EB6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetworkOperator.Core</RootNamespace>
+    <AssemblyName>NetworkOperatorCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Debug\NetworkOperator\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Release\NetworkOperator\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThreadSafeDataStructures, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\NetworkOperator\ThreadSafeDataStructures.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommunicationInterfaces\IOperationsAccessor.cs" />
+    <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="OperandSelectorMessageProcessor.cs" />
+    <Compile Include="OperandSelectorMessage.cs" />
+    <Compile Include="OperandSelectorMessageFactory.cs" />
+    <Compile Include="OperandSelectorMessageParser.cs" />
+    <Compile Include="OperationDescription\ActionRequest.cs" />
+    <Compile Include="OperationDescription\ActionRequestCreator.cs" />
+    <Compile Include="OperationDescription\ActionRequestProcessor.cs" />
+    <Compile Include="CommunicationInterfaces\ICommunicationInterface.cs" />
+    <Compile Include="OperationDescription\Configuration.cs" />
+    <Compile Include="OperationDescription\OperationInfo.cs" />
+    <Compile Include="UIMessanging\UIMessages\ErrorMessage.cs" />
+    <Compile Include="DataStructures\IRegistrable.cs" />
+    <Compile Include="CommunicationInterfaces\IUserInterface.cs" />
+    <Compile Include="CommunicationInterfaces\IUserInterfaceController.cs" />
+    <Compile Include="PluginLoading\Loader.cs" />
+    <Compile Include="UIMessanging\UIMessages\IUIMessage.cs" />
+    <Compile Include="UIMessanging\UIMessages\StatusChangedMessage.cs" />
+    <Compile Include="UIMessanging\UIMessages\SubstatusChangedMessage.cs" />
+    <Compile Include="UIMessanging\UIMessenger.cs" />
+    <Compile Include="NetworkOperator.cs" />
+    <Compile Include="OperandSelector.cs" />
+    <Compile Include="OperationDescription\Operation.cs" />
+    <Compile Include="OperationDescription\OperationComponent.cs" />
+    <Compile Include="UIMessanging\UIMessages\ProgressChangedMessage.cs" />
+    <Compile Include="Utils\ProgressCounter.cs" />
+    <Compile Include="DataStructures\Register.cs" />
+    <Compile Include="PluginLoading\PluginManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIMessanging\UIUpdater.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

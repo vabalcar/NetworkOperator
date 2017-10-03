@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30A694E2-A73E-473E-AEE1-E6ABC7A437A5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetworkOperator.CommunicationInterfaces</RootNamespace>
+    <AssemblyName>ParallelNetworkStream</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\Debug\NetworkOperator\CommunicationInterfaces\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Build\Release\NetworkOperator\CommunicationInterfaces\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComputerInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Build\Debug\NetworkOperator\CommunicationInterfaces\ComputerInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Collections.Immutable.1.4.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThreadSafeDataStructures">
+      <HintPath>..\..\..\Build\Debug\NetworkOperator\ThreadSafeDataStructures.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connection\Client.cs" />
+    <Compile Include="Connection\ConnectionEstablishmentStrategies\BroadcastConnectionEstablishmentStrategies\AutoSearchStrategy.cs" />
+    <Compile Include="Connection\ConnectionEstablishmentStrategies\BroadcastConnectionEstablishmentStrategies\Broadcasting\BroadcastClient.cs" />
+    <Compile Include="Connection\ConnectionEstablishmentStrategies\BroadcastConnectionEstablishmentStrategies\Broadcasting\BroadcastListener.cs" />
+    <Compile Include="Connection\ConnectionEstablishmentStrategies\BroadcastConnectionEstablishmentStrategies\Broadcasting\BroadcastTransmitter.cs" />
+    <Compile Include="Connection\ConnectionEstablishmentStrategies\BroadcastConnectionEstablishmentStrategies\HighPerformanceServerStrategy.cs" />
+    <Compile Include="Connection\ConnectionEstablishmentStrategies\BroadcastConnectionEstablishmentStrategy.cs" />
+    <Compile Include="Connection\Connector.cs" />
+    <Compile Include="Connection\EndPointFactory.cs" />
+    <Compile Include="Connection\IConnectionEstablishmentStrategy.cs" />
+    <Compile Include="Connection\Server.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelMultiTypeStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\InterleavingStreamDataSplitter.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\InterleavingStreamPacketProcessor.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\InterleavingStreamScheduler.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreams\ParallelBinaryStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreams\ParallelStringStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\InterleavingStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\IPacketReader.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Packet.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\PacketReader.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\PacketReaders\DataPacketReader.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\PacketReaders\NewTransferPacketReader.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\PacketReaders\SmallDataPacketReader.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\PacketStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Packets\DataPacket.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Packets\ManagePacket.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Packets\ManagePackets\NewTransferPacket.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Packets\SmallDataPacket.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Utils\PacketOperation.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\Utils\StreamOperation.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\IDataProcessor.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\VisitableDataProcessingStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\PacketStreaming\VisitableStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\IDataSplitter.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\IPacketProcessor.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\IStreamScheduler.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\InterleavingStreaming\ScheduledStreaming\ScheduledStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreaming\ParallelStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ParallelStreams\ParallelInternalMessageStream.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\Visitors\StreamTypeIdentifier.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\Visitors\StreamTypeNumberer.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\Visitors\TypedStreamSerializer.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\IStreamVisitor.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\ITypedStreamVisitor.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\StreamVisitor.cs" />
+    <Compile Include="ParallelMultiTypeStreaming\TypedStreamVisitor.cs" />
+    <Compile Include="ParallelNetworkStream.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Connection\InternalMessage.cs" />
+    <Compile Include="VariableWatching\VariableWatcher.cs" />
+    <Compile Include="VariableWatching\WatchedVariable.cs" />
+    <Compile Include="VariableWatching\WatchedVariableFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
