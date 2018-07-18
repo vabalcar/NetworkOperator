@@ -5,10 +5,16 @@ using System.Management;
 
 namespace NetworkOperator.Informants
 {
+    /// <summary>
+    /// Provides access to information about localhost. It's an implementation of singleton pattern.
+    /// </summary>
     public sealed class ComputerInfo
     {
         private static ComputerInfo current;
 
+        /// <summary>
+        /// The only instance of ComputerInfo.
+        /// </summary>
         public static ComputerInfo Current
         {
             get
@@ -27,6 +33,11 @@ namespace NetworkOperator.Informants
 
         private object performanceIndexCounterLock = new object();
         private uint performanceIndex = 0;
+
+        //TODO add definition of performance index
+        /// <summary>
+        /// Counts performance index.
+        /// </summary>
         public uint PerformanceIndex
         {
             get
@@ -53,6 +64,10 @@ namespace NetworkOperator.Informants
         }
 
         private List<ProcessorInfo> processors;
+
+        /// <summary>
+        /// Get a list of information about virtual processors.
+        /// </summary>
         public List<ProcessorInfo> Processors
         {
             get
@@ -69,6 +84,10 @@ namespace NetworkOperator.Informants
             }
         }
         private List<NetworkAdapterInfo> networkAdapters;
+
+        /// <summary>
+        /// Get a list of information about network adapters.
+        /// </summary>
         public List<NetworkAdapterInfo> NetworkAdapters
         {
             get
@@ -85,6 +104,10 @@ namespace NetworkOperator.Informants
             }
         }
         private PhysicalMemoryInfo memory;
+
+        /// <summary>
+        /// Get information about RAM.
+        /// </summary>
         public PhysicalMemoryInfo Memory
         {
             get
@@ -145,6 +168,11 @@ namespace NetworkOperator.Informants
             return new PhysicalMemoryInfo { Modules = modules, Capacity = capacity };
         }
 
+
+        /// <summary>
+        /// Print information about computer to given TextWriter.
+        /// </summary>
+        /// <param name="output">TextWriter used to write info to.</param>
         public void PrintComputerInfo(TextWriter output)
         {
             output.WriteLine($"This computer contains:");
