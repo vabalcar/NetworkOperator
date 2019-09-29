@@ -8,45 +8,37 @@ namespace CodeDataSizeCounter
     {
         static void Main(string[] args)
         {
-            if (args.Length < 3)
+            if (args.Length > 3)
             {
-                Console.WriteLine("Argument error");
+                Console.WriteLine("Too many arguments!");
+                return;
+            }
+            else if (args.Length < 1)
+            {
+                Console.WriteLine("Missing arguments!");
                 return;
             }
             bool verboseOutput = false;
-            string fullPath = string.Empty;
+            string fullPath = ".";
             string excludesFile = string.Empty;
             for (int i = 0; i < args.Length; i++)
             {
                 switch (i)
                 {
                     case 0:
-                        if(!Directory.Exists(args[i]))
-                        {
-                            Console.WriteLine("Invalid directory for searching for files");
-                            return;
-                        }
-                        fullPath = Path.GetFullPath(args[i]);
+                        if(Directory.Exists(args[i])) fullPath = args[i];
+                        else goto default;
                         break;
                     case 1:
-                        if (!File.Exists(args[i]))
-                        {
-                            Console.WriteLine("Invalid excludes file");
-                            return;
-                        }
-                        excludesFile = Path.GetFullPath(args[i]);
+                        if (File.Exists(args[i])) excludesFile = Path.GetFullPath(args[i]);
+                        else goto default;
                         break;
                     case 2:
-                        if (args[i] == "-v")
-                        {
-                            verboseOutput = true;
-                        }
-                        else
-                        {
-                            goto default;
-                        }
+                        if (args[i] == "-v") verboseOutput = true;
+                        else goto default;
                         break;
                     default:
+                        fullPath = Path.GetFullPath(fullPath);
                         Console.SetWindowSize(Console.LargestWindowWidth * 9 / 10, Console.LargestWindowHeight - 1);
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"Looking for *.{args[i]} files...");
@@ -113,6 +105,7 @@ namespace CodeDataSizeCounter
         static IList<string> GetExcludes(string excludesFile)
         {
             List<string> excludes = new List<string>();
+            if (excludesFile.Length == 0) return excludes;
             foreach (var line in File.ReadLines(excludesFile))
             {
                 excludes.Add(line);
